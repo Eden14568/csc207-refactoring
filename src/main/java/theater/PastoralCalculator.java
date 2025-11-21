@@ -1,5 +1,9 @@
 package theater;
 
+/**
+ * Calculator for pastoral plays.
+ * @author ZhengyangXiang
+ */
 public class PastoralCalculator extends AbstractPerformanceCalculator {
 
     public PastoralCalculator(Performance performance, Play play) {

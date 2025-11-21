@@ -1,5 +1,9 @@
 package theater;
 
+/**
+ * Calculator for tragedy plays.
+ * @author ZhengyangXiang
+ */
 public class TragedyCalculator extends AbstractPerformanceCalculator {
 
     public TragedyCalculator(Performance performance, Play play) {

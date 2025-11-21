@@ -1,5 +1,9 @@
 package theater;
 
+/**
+ * Abstract base class for performance calculators.
+ * @author ZhengyangXiang
+ */
 public abstract class AbstractPerformanceCalculator {
     private Performance performance;
     private Play play;
@@ -17,12 +21,23 @@ public abstract class AbstractPerformanceCalculator {
         return play;
     }
 
+    /**
+     * Calculates the amount for this performance.
+     * @return the calculated amount
+     */
     public abstract int getAmount();
 
     public int getVolumeCredits() {
         return Math.max(performance.getAudience() - Constants.BASE_VOLUME_CREDIT_THRESHOLD, 0);
     }
 
+    /**
+     * Factory method to create the appropriate calculator instance.
+     * @param performance the performance data
+     * @param play the play data
+     * @return a concrete subclass of AbstractPerformanceCalculator
+     * @throws RuntimeException if the play type is unknown
+     */
     public static AbstractPerformanceCalculator createPerformanceCalculator(Performance performance, Play play) {
         switch (play.getType()) {
             case "tragedy":

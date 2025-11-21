@@ -2,7 +2,7 @@ package theater;
 
 /**
  * Represents a play.
- * @author csc207
+ * @author ZhengyangXiang
  */
 public class Play {
 

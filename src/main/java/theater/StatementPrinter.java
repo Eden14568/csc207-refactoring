@@ -26,12 +26,16 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        StatementData statementData = new StatementData(invoice, plays);
+        final StatementData statementData = new StatementData(invoice, plays);
         return renderPlainText(statementData);
     }
 
+    /**
+     * Returns a formatted HTML statement of the invoice associated with this printer.
+     * @return the formatted HTML statement
+     */
     public String htmlStatement() {
-        StatementData statementData = new StatementData(invoice, plays);
+        final StatementData statementData = new StatementData(invoice, plays);
         return renderHtml(statementData);
     }
 
@@ -70,7 +74,7 @@ public class StatementPrinter {
     }
 
     private String usd(long aNumber) {
-        NumberFormat frmt = NumberFormat.getCurrencyInstance(Locale.US);
+        final NumberFormat frmt = NumberFormat.getCurrencyInstance(Locale.US);
         return frmt.format(aNumber / Constants.PERCENT_FACTOR);
     }
 }

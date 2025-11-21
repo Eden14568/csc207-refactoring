@@ -1,6 +1,20 @@
+Task 0: Created repository and cloned locally.
 Task 1: Fixed initial CheckStyle errors and verified tests pass.
 Task 2: Decomposed StatementPrinter.statement method.
   - Task 2.1: Extracted getAmount and getPlay methods.
   - Task 2.2: Extracted getVolumeCredits method.
   - Task 2.3: Extracted format method (usd).
   - Task 2.4: Replaced temp variables with queries.
+Task 3: Split Phase refactoring.
+  - Task 3.1: Extracted renderPlainText.
+  - Task 3.2: Introduced StatementData class.
+  - Moved customer, performances, and calculation logic to StatementData and PerformanceData.
+Task 4: HTML Support and Polymorphism.
+  - Task 4.1: Implemented htmlStatement and renderHtml.
+  - Task 4.2: Created AbstractPerformanceCalculator.
+  - Task 4.3: Implemented TragedyCalculator and ComedyCalculator.
+Task 5: Implemented Final Feature.
+  - Added support for History and Pastoral play types.
+Task 6: Final Code Cleanup.
+  - Fixed Javadoc and remaining CheckStyle issues.
+  - Final submission preparation.
