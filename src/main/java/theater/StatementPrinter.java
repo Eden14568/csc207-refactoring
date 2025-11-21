@@ -30,6 +30,11 @@ public class StatementPrinter {
         return renderPlainText(statementData);
     }
 
+    public String htmlStatement() {
+        StatementData statementData = new StatementData(invoice, plays);
+        return renderHtml(statementData);
+    }
+
     private String renderPlainText(StatementData statementData) {
         final StringBuilder result = new StringBuilder("Statement for " + statementData.getCustomer()
                 + System.lineSeparator());
@@ -41,6 +46,26 @@ public class StatementPrinter {
 
         result.append(String.format("Amount owed is %s%n", usd(statementData.totalAmount())));
         result.append(String.format("You earned %s credits%n", statementData.totalVolumeCredits()));
+        return result.toString();
+    }
+
+    private String renderHtml(StatementData statementData) {
+        final StringBuilder result = new StringBuilder("<h1>Statement for " + statementData.getCustomer()
+                + "</h1>" + System.lineSeparator());
+        result.append("<table>" + System.lineSeparator());
+
+        result.append(" <caption>Statement for " + statementData.getCustomer() + "</caption>" + System.lineSeparator());
+
+        result.append(" <tr><th>play</th><th>seats</th><th>cost</th></tr>" + System.lineSeparator());
+
+        for (PerformanceData p : statementData.getPerformances()) {
+            result.append(String.format(" <tr><td>%s</td><td>%s</td><td>%s</td></tr>%n",
+                    p.getName(), p.getAudience(), usd(p.getAmount())));
+        }
+
+        result.append("</table>" + System.lineSeparator());
+        result.append(String.format("<p>Amount owed is <em>%s</em></p>%n", usd(statementData.totalAmount())));
+        result.append(String.format("<p>You earned <em>%s</em> credits</p>%n", statementData.totalVolumeCredits()));
         return result.toString();
     }
 
