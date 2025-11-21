@@ -2,3 +2,4 @@ Task 1: Fixed initial CheckStyle errors and verified tests pass.
 Task 2: Decomposed StatementPrinter.statement method.
   - Task 2.1: Extracted getAmount and getPlay methods.
   - Task 2.2: Extracted getVolumeCredits method.
+  - Task 2.3: Extracted format method (usd).
