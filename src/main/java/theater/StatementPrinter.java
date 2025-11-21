@@ -16,10 +16,6 @@ public class StatementPrinter {
         this.plays = plays;
     }
 
-    public Invoice getInvoice() {
-        return invoice;
-    }
-
     public Map<String, Play> getPlays() {
         return plays;
     }
@@ -30,14 +26,15 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        return renderPlainText();
+        StatementData statementData = new StatementData(invoice);
+        return renderPlainText(statementData);
     }
 
-    private String renderPlainText() {
-        final StringBuilder result = new StringBuilder("Statement for " + invoice.getCustomer()
+    private String renderPlainText(StatementData statementData) {
+        final StringBuilder result = new StringBuilder("Statement for " + statementData.getCustomer()
                 + System.lineSeparator());
 
-        for (Performance p : invoice.getPerformances()) {
+        for (Performance p : statementData.getPerformances()) {
             // print line for this order
             result.append(String.format("  %s: %s (%s seats)%n", getPlay(p).getName(),
                     usd(getAmount(p)), p.getAudience()));
